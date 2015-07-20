@@ -6,6 +6,13 @@
 //  Copyright (c) 2015 Maria Lomidze. All rights reserved.
 //
 
+/* 
+ * This class is used when data from the database is read.
+ * The array get populated with corresponding data, which later displayed 
+ * as table view
+**/ 
+
+
 import Parse
 import UIKit
 

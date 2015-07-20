@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-
+/*
 class SecondViewController: UIViewController, UITextFieldDelegate {
     
 
@@ -68,7 +68,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
         
         // if both of the text fields are not empty, store them in the
         // array (rideArray)
-        if(countElements(fromBox.text) != 0 && countElements(toBox.text) != 0) {
+        if(count(fromBox.text) != 0 && count(toBox.text) != 0) {
             
             
             
@@ -92,7 +92,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
             
             
             // add new ride to the array
-            rideDataManager.addRide(fromBox.text, toCity: toBox.text)
+            //rideDataManager.addRide(fromBox.text, toCity: toBox.text)
             
             // close keyboard 
             self.view.endEditing(true)
@@ -101,7 +101,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
             fromBox.text = ""
             toBox.text = ""
             
-            // once the task is added, jump back to the main view 
+            // once it is added, jump back to the main view 
             self.navigationController?.popToRootViewControllerAnimated(true)
         }
     }
@@ -136,4 +136,4 @@ class SecondViewController: UIViewController, UITextFieldDelegate {
     
     
     
-}
+}*/

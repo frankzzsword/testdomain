@@ -18,8 +18,8 @@ class MainTableViewController: UITableViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var menuBar: UIBarButtonItem!
     
-    
     @IBOutlet var myTableView: UITableView!
+   
     
     override func viewDidLoad() {
         
@@ -72,13 +72,15 @@ class MainTableViewController: UITableViewController, UITableViewDelegate, UITab
                     
                     for object in objects {
                         
-                        var from = object["from_City"] as String
-                        var to = object["to_City"] as String
+                        var from = object["from_City"] as! String
+                        var to = object["to_City"] as! String
                         
+                        // add ride to the helper array
                         rideDataManager.addRide(from, toCity: to)
                         
                     }
                     self.myTableView.reloadData()
+                  
                 }
                 else {
                     // details about the error
@@ -98,19 +100,19 @@ class MainTableViewController: UITableViewController, UITableViewDelegate, UITab
 
     /*
      * Transition to the next view - segue 
-     */
+     *
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         // if it is second view segue, get the second view object
         if(segue.identifier == "secondViewSegue"){
             
             // get the secondViewController object
-            let secondView = segue.destinationViewController as SecondViewController
+            let secondView = segue.destinationViewController as AddRideTableViewController
 
             //secondView.labelText = "Changing"
             
         }
-    }
+    }*/
     
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -138,7 +140,7 @@ class MainTableViewController: UITableViewController, UITableViewDelegate, UITab
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // get my custom cell with identifier "cell", with labels (fromCity, toCity etc)
-        let cell: TableViewCell = tableView.dequeueReusableCellWithIdentifier("cell",  forIndexPath: indexPath) as TableViewCell
+        let cell: TableViewCell = tableView.dequeueReusableCellWithIdentifier("cell",  forIndexPath: indexPath) as! TableViewCell
        
         
         // set the labels to whatever is stored in the array

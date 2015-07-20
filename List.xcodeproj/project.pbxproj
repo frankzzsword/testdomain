@@ -23,7 +23,6 @@
 		B728EC3A1B55DDF4002AE2CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B728EC391B55DDF4002AE2CA /* libz.dylib */; };
 		B728EC3C1B55DDFD002AE2CA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B728EC3B1B55DDFD002AE2CA /* libsqlite3.dylib */; };
 		B74F7E271B5078D200E5181D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74F7E261B5078D200E5181D /* AppDelegate.swift */; };
-		B74F7E2C1B5078D200E5181D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74F7E2A1B5078D200E5181D /* Main.storyboard */; };
 		B74F7E2E1B5078D200E5181D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74F7E2D1B5078D200E5181D /* Images.xcassets */; };
 		B74F7E311B5078D200E5181D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B74F7E2F1B5078D200E5181D /* LaunchScreen.xib */; };
 		B74F7E3D1B5078D200E5181D /* ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74F7E3C1B5078D200E5181D /* ListTests.swift */; };
@@ -32,9 +31,19 @@
 		B7D22A201B59429F0072E18D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A1F1B59429F0072E18D /* MenuViewController.swift */; };
 		B7D22A231B5948C90072E18D /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A221B5948C90072E18D /* SideMenuTableViewCell.swift */; };
 		B7D22A2A1B5998B70072E18D /* AddRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A291B5998B70072E18D /* AddRideTableViewController.swift */; };
-		B7D22A2F1B59B9BE0072E18D /* AddRideInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A2E1B59B9BE0072E18D /* AddRideInfoManager.swift */; };
-		B7D22A311B59FFAF0072E18D /* AddRideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A301B59FFAF0072E18D /* AddRideTableViewCell.swift */; };
 		B7D22A371B5AE6760072E18D /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A361B5AE6760072E18D /* MyProfileViewController.swift */; };
+		B7D22A391B5AF2740072E18D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7D22A381B5AF2740072E18D /* Main.storyboard */; };
+		B7D22A3D1B5AF49F0072E18D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D22A3A1B5AF49F0072E18D /* FBSDKCoreKit.framework */; };
+		B7D22A3E1B5AF49F0072E18D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D22A3B1B5AF49F0072E18D /* FBSDKLoginKit.framework */; };
+		B7D22A3F1B5AF49F0072E18D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D22A3C1B5AF49F0072E18D /* FBSDKShareKit.framework */; };
+		B7D22A431B5AF98D0072E18D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D22A421B5AF98D0072E18D /* Bolts.framework */; };
+		B7D22A461B5AFAE50072E18D /* FacebookLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A451B5AFAE50072E18D /* FacebookLoginViewController.swift */; };
+		B7D22A4C1B5B0EE70072E18D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D22A4B1B5B0EE70072E18D /* ParseFacebookUtilsV4.framework */; };
+		B7D22A4E1B5B53B10072E18D /* FromCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A4D1B5B53B10072E18D /* FromCityViewController.swift */; };
+		B7D22A521B5B61C00072E18D /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A511B5B61C00072E18D /* Protocol.swift */; };
+		B7D22A541B5B846C0072E18D /* ToCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A531B5B846C0072E18D /* ToCityViewController.swift */; };
+		B7D22A581B5BF13C0072E18D /* ManageRideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A571B5BF13C0072E18D /* ManageRideCell.swift */; };
+		B7D22A5A1B5BF1570072E18D /* ManageRideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D22A591B5BF1570072E18D /* ManageRideTableViewController.swift */; };
 		B7E2C5641B51DAA500B0698A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C5631B51DAA500B0698A /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +76,6 @@
 		B74F7E211B5078D200E5181D /* List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74F7E251B5078D200E5181D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74F7E261B5078D200E5181D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B74F7E2B1B5078D200E5181D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B74F7E2D1B5078D200E5181D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B74F7E301B5078D200E5181D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B74F7E361B5078D200E5181D /* ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,9 +88,19 @@
 		B7D22A1F1B59429F0072E18D /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B7D22A221B5948C90072E18D /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		B7D22A291B5998B70072E18D /* AddRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRideTableViewController.swift; sourceTree = "<group>"; };
-		B7D22A2E1B59B9BE0072E18D /* AddRideInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRideInfoManager.swift; sourceTree = "<group>"; };
-		B7D22A301B59FFAF0072E18D /* AddRideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRideTableViewCell.swift; path = " /  FromCellTableViewCell.swift /  List / /  Created by Maria Todd on 7/17/15. /  Copyright (c) 2015 Maria Lomidze. All rights reserved. /  import UIKit   class AddRideTableViewCell: UITableViewCell {      override func awakeFromNib() {         super.awakeFromNib()         / Initialization code     }      override func setSelected(selected: Bool, animated: Bool) {         super.setSelected(selected, animated: animated)          /AddRideTableViewCell.swift"; sourceTree = "<group>"; };
 		B7D22A361B5AE6760072E18D /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		B7D22A381B5AF2740072E18D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B7D22A3A1B5AF49F0072E18D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		B7D22A3B1B5AF49F0072E18D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		B7D22A3C1B5AF49F0072E18D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		B7D22A421B5AF98D0072E18D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		B7D22A451B5AFAE50072E18D /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
+		B7D22A4B1B5B0EE70072E18D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../Downloads/parse-library-1/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
+		B7D22A4D1B5B53B10072E18D /* FromCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromCityViewController.swift; sourceTree = "<group>"; };
+		B7D22A511B5B61C00072E18D /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		B7D22A531B5B846C0072E18D /* ToCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToCityViewController.swift; sourceTree = "<group>"; };
+		B7D22A571B5BF13C0072E18D /* ManageRideCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRideCell.swift; sourceTree = "<group>"; };
+		B7D22A591B5BF1570072E18D /* ManageRideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageRideTableViewController.swift; sourceTree = "<group>"; };
 		B7E2C5631B51DAA500B0698A /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,15 +111,20 @@
 			files = (
 				B728EC3C1B55DDFD002AE2CA /* libsqlite3.dylib in Frameworks */,
 				B728EC3A1B55DDF4002AE2CA /* libz.dylib in Frameworks */,
+				B7D22A3E1B5AF49F0072E18D /* FBSDKLoginKit.framework in Frameworks */,
 				B728EC381B55DDE6002AE2CA /* SystemConfiguration.framework in Frameworks */,
 				B728EC361B55DDDD002AE2CA /* StoreKit.framework in Frameworks */,
 				B728EC341B55DDD4002AE2CA /* Security.framework in Frameworks */,
 				B728EC321B55DDCE002AE2CA /* QuartzCore.framework in Frameworks */,
 				B728EC301B55DDC6002AE2CA /* MobileCoreServices.framework in Frameworks */,
+				B7D22A3F1B5AF49F0072E18D /* FBSDKShareKit.framework in Frameworks */,
 				B728EC2E1B55DDBD002AE2CA /* CoreLocation.framework in Frameworks */,
 				B728EC2C1B55DDB3002AE2CA /* CoreGraphics.framework in Frameworks */,
 				B728EC2A1B55DDA8002AE2CA /* CFNetwork.framework in Frameworks */,
+				B7D22A431B5AF98D0072E18D /* Bolts.framework in Frameworks */,
 				B728EC281B55DDA0002AE2CA /* AudioToolbox.framework in Frameworks */,
+				B7D22A4C1B5B0EE70072E18D /* ParseFacebookUtilsV4.framework in Frameworks */,
+				B7D22A3D1B5AF49F0072E18D /* FBSDKCoreKit.framework in Frameworks */,
 				B728EC261B55DD2F002AE2CA /* Parse.framework in Frameworks */,
 				B728EC251B55DD2F002AE2CA /* Bolts.framework in Frameworks */,
 			);
@@ -120,6 +143,7 @@
 		B728EC3E1B55E515002AE2CA /* SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				B7D22A401B5AF4A80072E18D /* Facebook */,
 				B728EC3B1B55DDFD002AE2CA /* libsqlite3.dylib */,
 				B728EC391B55DDF4002AE2CA /* libz.dylib */,
 				B728EC371B55DDE6002AE2CA /* SystemConfiguration.framework */,
@@ -159,14 +183,15 @@
 		B74F7E231B5078D200E5181D /* List */ = {
 			isa = PBXGroup;
 			children = (
+				B7D22A441B5AFAB40072E18D /* FacebookLogin */,
 				B7D22A181B58A2400072E18D /* SideMenu Bar */,
+				B7D22A2D1B599E340072E18D /* AddRide */,
 				B74F7E261B5078D200E5181D /* AppDelegate.swift */,
 				B74F7E4C1B51D72800E5181D /* RideDataManager.swift */,
 				B728EC1E1B54AD08002AE2CA /* MainTableViewController.swift */,
 				B728EC201B54B198002AE2CA /* TableViewCell.swift */,
 				B7E2C5631B51DAA500B0698A /* SecondViewController.swift */,
-				B7D22A2D1B599E340072E18D /* AddRide */,
-				B74F7E2A1B5078D200E5181D /* Main.storyboard */,
+				B7D22A381B5AF2740072E18D /* Main.storyboard */,
 				B74F7E2D1B5078D200E5181D /* Images.xcassets */,
 				B74F7E2F1B5078D200E5181D /* LaunchScreen.xib */,
 				B74F7E241B5078D200E5181D /* Supporting Files */,
@@ -206,6 +231,8 @@
 				B7D22A1F1B59429F0072E18D /* MenuViewController.swift */,
 				B7D22A221B5948C90072E18D /* SideMenuTableViewCell.swift */,
 				B7D22A361B5AE6760072E18D /* MyProfileViewController.swift */,
+				B7D22A591B5BF1570072E18D /* ManageRideTableViewController.swift */,
+				B7D22A571B5BF13C0072E18D /* ManageRideCell.swift */,
 			);
 			name = "SideMenu Bar";
 			sourceTree = "<group>";
@@ -223,11 +250,32 @@
 		B7D22A2D1B599E340072E18D /* AddRide */ = {
 			isa = PBXGroup;
 			children = (
-				B7D22A2E1B59B9BE0072E18D /* AddRideInfoManager.swift */,
+				B7D22A511B5B61C00072E18D /* Protocol.swift */,
 				B7D22A291B5998B70072E18D /* AddRideTableViewController.swift */,
-				B7D22A301B59FFAF0072E18D /* AddRideTableViewCell.swift */,
+				B7D22A4D1B5B53B10072E18D /* FromCityViewController.swift */,
+				B7D22A531B5B846C0072E18D /* ToCityViewController.swift */,
 			);
 			name = AddRide;
+			sourceTree = "<group>";
+		};
+		B7D22A401B5AF4A80072E18D /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				B7D22A4B1B5B0EE70072E18D /* ParseFacebookUtilsV4.framework */,
+				B7D22A421B5AF98D0072E18D /* Bolts.framework */,
+				B7D22A3A1B5AF49F0072E18D /* FBSDKCoreKit.framework */,
+				B7D22A3B1B5AF49F0072E18D /* FBSDKLoginKit.framework */,
+				B7D22A3C1B5AF49F0072E18D /* FBSDKShareKit.framework */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		B7D22A441B5AFAB40072E18D /* FacebookLogin */ = {
+			isa = PBXGroup;
+			children = (
+				B7D22A451B5AFAE50072E18D /* FacebookLoginViewController.swift */,
+			);
+			name = FacebookLogin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B74F7E2C1B5078D200E5181D /* Main.storyboard in Resources */,
+				B7D22A391B5AF2740072E18D /* Main.storyboard in Resources */,
 				B74F7E311B5078D200E5181D /* LaunchScreen.xib in Resources */,
 				B74F7E2E1B5078D200E5181D /* Images.xcassets in Resources */,
 			);
@@ -331,14 +379,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7E2C5641B51DAA500B0698A /* SecondViewController.swift in Sources */,
-				B7D22A311B59FFAF0072E18D /* AddRideTableViewCell.swift in Sources */,
-				B7D22A2F1B59B9BE0072E18D /* AddRideInfoManager.swift in Sources */,
+				B7D22A521B5B61C00072E18D /* Protocol.swift in Sources */,
+				B7D22A5A1B5BF1570072E18D /* ManageRideTableViewController.swift in Sources */,
+				B7D22A461B5AFAE50072E18D /* FacebookLoginViewController.swift in Sources */,
 				B7D22A2A1B5998B70072E18D /* AddRideTableViewController.swift in Sources */,
 				B74F7E4D1B51D72800E5181D /* RideDataManager.swift in Sources */,
 				B728EC211B54B198002AE2CA /* TableViewCell.swift in Sources */,
+				B7D22A541B5B846C0072E18D /* ToCityViewController.swift in Sources */,
+				B7D22A4E1B5B53B10072E18D /* FromCityViewController.swift in Sources */,
 				B7D22A371B5AE6760072E18D /* MyProfileViewController.swift in Sources */,
 				B7D22A231B5948C90072E18D /* SideMenuTableViewCell.swift in Sources */,
 				B7D22A201B59429F0072E18D /* MenuViewController.swift in Sources */,
+				B7D22A581B5BF13C0072E18D /* ManageRideCell.swift in Sources */,
 				B728EC1F1B54AD08002AE2CA /* MainTableViewController.swift in Sources */,
 				B74F7E271B5078D200E5181D /* AppDelegate.swift in Sources */,
 				B7D22A1C1B58A29F0072E18D /* SWRevealViewController.m in Sources */,
@@ -364,14 +416,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B74F7E2A1B5078D200E5181D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B74F7E2B1B5078D200E5181D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B74F7E2F1B5078D200E5181D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -468,6 +512,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/marialomidze/Documents/FacebookSDK,
+					"/Users/marialomidze/Downloads/parse-library-1",
 				);
 				INFOPLIST_FILE = List/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -485,6 +531,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/marialomidze/Documents/FacebookSDK,
+					"/Users/marialomidze/Downloads/parse-library-1",
 				);
 				INFOPLIST_FILE = List/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

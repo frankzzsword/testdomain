@@ -11,10 +11,25 @@ import UIKit
 class MyProfileViewController: UIViewController {
 
     
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var profilePicture: UIImageView!
+    
+    @IBOutlet weak var menuBar: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        // shows side menu when hamburger button is pressed and hides it when it is pressed again
+        if self.revealViewController() != nil {
+            menuBar.target = self.revealViewController()
+            menuBar.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
