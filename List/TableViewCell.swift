@@ -17,6 +17,9 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var toLabel: UILabel!
     
+    @IBOutlet weak var price: UILabel!
+    
+    @IBOutlet weak var time: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

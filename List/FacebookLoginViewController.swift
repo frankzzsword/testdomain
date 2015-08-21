@@ -1,119 +1,117 @@
 //
-//  FacebookLoginViewController.swift
+//  FacbookLoginViewController.swift
 //  List
 //
-//  Created by Maria Todd on 7/18/15.
+//  Created by Varun Mishra on 7/20/15.
 //  Copyright (c) 2015 Maria Lomidze. All rights reserved.
 //
 
 import UIKit
-import Parse
+import CoreLocation
 
-class FacebookLoginViewController: UIViewController {
+class FacbookLoginViewController: UIViewController, CLLocationManagerDelegate {
+    
+    var locationManager: CLLocationManager = CLLocationManager()
+    var startLocation: CLLocation!
+    var point: PFGeoPoint!
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestWhenInUseAuthorization()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+
+
+    }
+    
+    func locationManager(manager: CLLocationManager!,
+        didUpdateLocations locations: [AnyObject]!)
+    {
+        var locValue:CLLocationCoordinate2D = manager.location.coordinate
+        point = PFGeoPoint(latitude: locValue.latitude, longitude: locValue.longitude)
+        locationManager.stopUpdatingLocation()
+
+    }
+
+    
+        override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
-    /* 
-     * When button is pressed, it redirects you to fb screen and creates a User class 
-     * in Parse
-     */
-    @IBAction func fbButton(sender: UIButton) {
-        
-        let permissions = []
-        
+    
+    @IBAction func facebookLogin() {
+        //the permissions required from facebook user
+        let permissions = ["email", "user_friends", "public_profile"]
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions as [AnyObject]) {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
                 if user.isNew {
-                    //println("User signed up and logged in through Facebook!")
+                    println("User signed up and logged in through Facebook!")
                     
-                    self.returnUserData()
-                    
-                    
+                    if((FBSDKAccessToken.currentAccessToken()) != nil){
+                        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, first_name, last_name, gender"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                            if (error == nil){
+                                let fbid = result.valueForKey("id") as! String
+                                let email = result.valueForKey("email") as! String
+                                let firstname = result.valueForKey("first_name") as! String
+                                let userGender = result.valueForKey("gender") as! String
+                                
+                                let facebookPictureLink = "https://graph.facebook.com/\(fbid)/picture?type=large&return_ssl_resources=1"
+                                var URLRequest = NSURL(string: facebookPictureLink)
+                                var URLRequestNeeded = NSURLRequest(URL: URLRequest!)
+                                
+                                
+                                NSURLConnection.sendAsynchronousRequest(URLRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!, error: NSError!) -> Void in
+                                    if error == nil {
+                                        var picture = PFFile(data: data)
+                                        PFUser.currentUser()!.setObject(picture, forKey: "profilePicture")
+                                        PFUser.currentUser()!.saveInBackground()
+                                    }
+                                    else {
+                                        println("Error: \(error.localizedDescription)")
+                                    }
+                                })
+                                
+                                
+
+                                PFUser.currentUser()?.username = email
+                                PFUser.currentUser()?["firstName"] = firstname
+                                PFUser.currentUser()?["gender"] = userGender
+                                PFUser.currentUser()?["location"] = self.point
+                                PFUser.currentUser()!.saveInBackground()
+                                
+                            }
+                        })
+                    }
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
-                    //println("User logged in through Facebook!")
+                    
+                    println("User logged in through Facebook!")
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    
                 }
             } else {
-                //println("Uh oh. The user cancelled the Facebook login.")
+                println("Uh oh. The user cancelled the Facebook login.")
             }
         }
-    
     }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-        
-    }
-    
-    
-    
-    /* 
-     * This method can be called to get current user information.
-     * It can be called by "self.returnUserData()" after user has logged in
-     * Returns
-     */
-    
-    var userName : String = ""
-    var userEmail : String = ""
-    
-   func returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {   
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                println("fetched user: \(result)")
-                self.userName = result.valueForKey("name") as! String
-                println("User Name is: \(self.userName)")
-                // send data to the database
-                var name = PFObject(className: "User")
-                
-                name["Name"] = self.userName
-                //name["email"] = self.userEmail as String
-                
-                // save the object I just created in the database with all the fields
-                name.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        // The object has been saved.
-                        
-                    } else {
-                        // There was a problem, check error.description
-                        println(error?.description)
-                    }
-                }
-
-                //self.userEmail = result.valueForKey("email") as NSString
-                //println("User Email is: \(userEmail)")
-            }
-        })
-    }
-    
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

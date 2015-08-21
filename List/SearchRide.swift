@@ -13,11 +13,8 @@ import Parse
 import MapKit
 
 
-class AddRideTableViewController: UITableViewController, UITableViewDataSource, MKMapViewDelegate, UITableViewDelegate, UIPickerViewDelegate, getValue {
+class SearchRideViewController: UITableViewController, UITableViewDataSource, MKMapViewDelegate, UITableViewDelegate, UIPickerViewDelegate, getValue {
     
-    @IBOutlet weak var pricePicker: UIPickerView!
-    
-    @IBOutlet weak var pricePickerCell: UITableViewCell!
     
     @IBOutlet weak var fromCityLabel: UILabel!
     
@@ -25,20 +22,9 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
     
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var price: UILabel!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    @IBOutlet weak var comment: UILabel!
-    
-    
-    @IBOutlet weak var passengerStepperLabel: UILabel!
-    
-    @IBOutlet weak var passengerStepper: UIStepper!
-    
-    @IBAction func passengerStepperAction(sender: AnyObject) {
-        passengerStepperLabel.text = Int(passengerStepper.value).description
-    }
     
     var currentSegue: String = ""
     
@@ -53,8 +39,8 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
     var localSearchResponse:MKLocalSearchResponse!
     var error:NSError!
     var pointAnnotation:MKPointAnnotation!
-
-
+    
+    
     
     
     // number of rows per section
@@ -75,8 +61,6 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pricePicker.hidden = true
-        price.text = arrayOfPrices[0]
         
     }
     
@@ -88,29 +72,11 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
     
     
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        price.text = arrayOfPrices[row]
-    }
-    
-    
     /*
     * When a price cell is selected, hidden cell with price picker shows up
     */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        // price cell
-        if(indexPath.section == 1 && indexPath.row == 2) {
-            // if showCell is true (like by default)
-            if(showPickerCell){
-                // then hide the cell
-                self.hideCell()
-            }
-            else{
-                // show the picker if showCell is false
-                self.showCell()
-            }
-        }
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     
@@ -144,27 +110,12 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
         
         // if the price cell is pressed, change the height to 0
         if(indexPath.section == 1 && indexPath.row == 3) {
-            if(showPickerCell) {
-                height = 0.0
-            }
-                
-            else {
-                height = 178
-                pricePicker.hidden = false
-                
-            }
-        }
+                   }
         return height
     }
     
     
     
-    
-    func keyboardWillShow() {
-        if self.showPickerCell {
-            self.hideCell()
-        }
-    }
     
     
     
@@ -197,42 +148,9 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
     
     
     
-    func showCell(){
-        showPickerCell = true
-        self.tableView.beginUpdates()
-        self.tableView.endUpdates()
-        
-        self.pricePicker.hidden = false
-        
-        self.pricePicker.alpha = 0.0
-        
-        UIView.animateWithDuration(0.25, animations: {
-            self.pricePicker.alpha = 0.0
-        })
-        
-    }
-    
-    
-    
     /*
     * This function hides additional cell when price cell is selected
     */
-    func hideCell(){
-        showPickerCell = false
-        self.tableView.beginUpdates()
-        
-        self.tableView.endUpdates()
-        
-        UIView.animateWithDuration(0.25, animations: {
-            self.pricePicker.alpha = 1.0
-            
-            }, completion: {(finished: Bool) in
-                //self.pricePicker.hidden = true
-                
-        })
-        
-    }
-    
     
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -344,14 +262,11 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
         if(currentSegue == "toToCityView"){
             toCityLabel.text = input
         }
-        if(currentSegue == "toCommentView"){
-            comment.text = input
-        }
         if(currentSegue == "toCalendarView"){
             dateLabel.text = input
         }
     }
-        
+    
     
     @IBAction func goBack(sender: AnyObject) {
         // return back to previous view
@@ -365,60 +280,12 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
     */
     @IBAction func saveButton(sender: AnyObject) {
         
-        // if the session is current
-        if((FBSDKAccessToken.currentAccessToken()) != nil) {
-            
-            
-            // if all the required fields are set by the user, then the "save" button
-            // can be pressed
-            if((toCityLabel.text != "Any City" && fromCityLabel.text != "Current Location"
-                && !passengerStepperLabel.text!.isEmpty && !price.text!.isEmpty)){
-                    
-                    
-                    // get current user in session, and if user is logged in, save the ride
-                    if let currentU: PFUser = PFUser.currentUser() {
-                        
-                        var pr: Int?
-                        
-                        
-                        let originPoint = PFGeoPoint(latitude: self.cityLatitude!, longitude: self.cityLongitude!)
-                        
-                        
-                        // send Ride data to the database
-                        var rideInfo = PFObject(className: "Ride")
-                        rideInfo["from_Coordinates"] = originPoint
-                        rideInfo["from_CityName"] = fromCityLabel.text!
-                        rideInfo["to_City"] = toCityLabel.text!
-                        rideInfo["passengers"] = passengerStepperLabel.text!.toInt()!
-                        if(price.text == "Free"){
-                            rideInfo["price"] = 0
-                        }
-                        else {
-                            // drop the dollar sign, and drop everything after period
-                            var prize = dropFirst(price.text!)
-                            let toDelete = prize.rangeOfString(".")
-                            prize.removeRange(toDelete!.startIndex..<prize.endIndex)
-                            rideInfo["price"] = prize.toInt()
-                            pr = prize.toInt()
-                            
-                            
-                        }
-                        rideInfo["date"] = dateLabel.text
-                        rideInfo["comment"] = comment.text
-                        // store current user Id in a driver field
-                        rideInfo["driver"] = currentU.objectId
-                        // save Ride object in the database
-                        rideInfo.saveInBackgroundWithBlock {
-                            (success: Bool, error: NSError?) -> Void in
-                        }
-                        self.view.endEditing(true)
+     
                         self.dismissViewControllerAnimated(true, completion: nil)
-             }
-            
-        }
+                    }
+                    
         
-    }
-    }
+            
     
     func findCityCoordinates(cityName: String!)  {
         var geocoder = CLGeocoder()
@@ -427,8 +294,9 @@ class AddRideTableViewController: UITableViewController, UITableViewDataSource, 
                 self.cityLatitude = placemark.location.coordinate.latitude
                 self.cityLongitude = placemark.location.coordinate.longitude
             }
-
+            
         })
-}
+    }
+
 
 }
