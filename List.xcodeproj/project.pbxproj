@@ -745,8 +745,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/varunmishra/Documents/iPhone/List/,
-					/Users/varunmishra/Documents/iPhone/List/,
+					/,
+					/,
 				);
 				INFOPLIST_FILE = List/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
